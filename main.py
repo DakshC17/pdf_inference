@@ -17,7 +17,7 @@ def main():
     2. Split text into chunks
     3. Generate embeddings for text chunks
     4. Store embeddings in vector database
-    5. Process user queries using RAG
+    5. Process user queries using RAG___
     """
     print("PDF RAG Tool - Upload a PDF and ask questions")
     print("=============================================")
