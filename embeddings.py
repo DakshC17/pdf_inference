@@ -37,3 +37,36 @@ def load_vector_store(directory="vector_store"):
     print(f"Vector store loaded from '{directory}' directory")
     
     return vector_store
+
+
+
+
+if __name__ == "__main__":
+    # Test code for the embeddings module
+    from pdf_processor import load_pdf, split_text
+    
+    test_pdf_path = input("Enter a PDF path to test embeddings: ")
+    
+    # Process the PDF
+    docs = load_pdf(test_pdf_path)
+    chunks = split_text(docs)
+    
+    # Create and save vector store
+    vs = create_vector_store(chunks)
+    save_dir = "test_vector_store"
+    save_vector_store(vs, save_dir)
+    
+    # Test loading the vector store
+    loaded_vs = load_vector_store(save_dir)
+    
+    # Test simple similarity search
+    query = input("Enter a test query to search in the document: ")
+    results = loaded_vs.similarity_search(query, k=2)
+    
+    print("\nSearch Results:")
+    for i, doc in enumerate(results):
+        print(f"\nResult {i+1}:")
+        print(f"Content: {doc.page_content[:150]}...")
+        print(f"Metadata: {doc.metadata}")
+    
+    print("\nEmbeddings module test complete!")
