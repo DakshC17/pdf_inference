@@ -1,6 +1,6 @@
 import os
 from langchain_groq import ChatGroq
-from langchain.chains import retrieval_qa
+from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
 def setup_llm():
@@ -46,7 +46,7 @@ def create_rag_chain(vector_store):
     )
     
     # Create the RAG chain
-    rag_chain = retrieval_qa.from_chain_type(
+    rag_chain = RetrievalQA.from_chain_type(
         llm=llm,
         chain_type="stuff",  # "stuff" means we stuff all documents into the prompt
         retriever=retriever,
