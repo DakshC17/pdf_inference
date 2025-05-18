@@ -17,7 +17,7 @@ def main():
     2. Split text into chunks
     3. Generate embeddings for text chunks
     4. Store embeddings in vector database
-    5. Process user queries using RAG___
+    5. Process user queries using RAG
     """
     print("PDF RAG Tool - Upload a PDF and ask questions")
     print("=============================================")
@@ -90,3 +90,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+    #modifications can be done by giving options to user like which llm you can use we can import that
+    #with some llm providers by rag
