@@ -4,10 +4,24 @@ from pathlib import Path
 from pdf_processor import load_pdf, split_text
 from embeddings import create_vector_store, save_vector_store, load_vector_store
 from rag import create_rag_chain, query_pdf
+import tkinter as tk
+from tkinter import filedialog
 
 # Load environment variables from .env file
 # This will make API keys accessible via os.environ
 load_dotenv()
+
+def select_pdf_file():
+    """
+    Open a file dialog to select a PDF file and return the path.
+    """
+    root = tk.Tk()
+    root.withdraw()  # Hide the main window
+    file_path = filedialog.askopenfilename(
+        title="Select PDF File",
+        filetypes=[("PDF files", "*.pdf"), ("All files", "*.*")]
+    )
+    return file_path
 
 def main():
     """
@@ -31,13 +45,21 @@ def main():
     choice = input("Do you want to: \n1. Process a new PDF \n2. Use existing vector store\nEnter choice (1/2): ")
     
     if choice == "1":
-        # Get user input for PDF file path
-        pdf_path = input("Enter the path to your PDF file: ")
+        # Use file dialog to select PDF file
+        print("Please select a PDF file in the file dialog...")
+        pdf_path = select_pdf_file()
+        
+        # Check if user canceled the file selection
+        if not pdf_path:
+            print("File selection canceled. Exiting.")
+            return
         
         # Validate if the file exists
         if not Path(pdf_path).exists():
             print(f"Error: File '{pdf_path}' not found.")
             return
+        
+        print(f"Selected file: {pdf_path}")
         
         # Process PDF and create vector store
         documents = load_pdf(pdf_path)
@@ -91,6 +113,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-    #modifications can be done by giving options to user like which llm you can use we can import that
-    #with some llm providers by rag
+#added pypdf
