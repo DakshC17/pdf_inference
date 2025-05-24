@@ -77,25 +77,25 @@ if __name__ == "__main__":
         # Create RAG chain
         chain = create_rag_chain(vector_store)
         
-        # # Test with user query
-        # while True:
-        #     query = input("\nEnter a question (or 'exit' to quit): ")
-        #     if query.lower() in ['exit', 'quit', 'q']:
-        #         break
+        # Test with user query
+        while True:
+            query = input("\nEnter a question (or 'exit' to quit): ")
+            if query.lower() in ['exit', 'quit', 'q']:
+                break
                 
-        #     # Process query
-        #     result = query_pdf(chain, query)
+            # Process query
+            result = query_pdf(chain, query)
             
-        #     # Print answer
-        #     print("\nAnswer:")
-        #     print(result["result"])
+            # Print answer
+            print("\nAnswer:")
+            print(result["result"])
             
-        #     # Print sources
-        #     print("\nSources:")
-        #     for i, doc in enumerate(result["source_documents"]):
-        #         print(f"Source {i+1}:")
-        #         print(f"Page: {doc.metadata.get('page', 'Unknown')}")
-        #         print(f"Excerpt: {doc.page_content[:150]}...\n")
+            # Print sources
+            print("\nSources:")
+            for i, doc in enumerate(result["source_documents"]):
+                print(f"Source {i+1}:")
+                print(f"Page: {doc.metadata.get('page', 'Unknown')}")
+                print(f"Excerpt: {doc.page_content[:150]}...\n")
         
     except FileNotFoundError:
         print("No vector store found. Please run embeddings.py first to create a vector store.")
