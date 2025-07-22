@@ -9,10 +9,10 @@ def setup_llm():
     if not groq_api_key:
         raise ValueError("GROQ_API_KEY not found in environment variables")
     
-    # Initialize the LLM with Groq
+
     llm = ChatGroq(
         groq_api_key=groq_api_key,
-        model_name="llama3-8b-8192"  # You can try other models too
+        model_name="llama3-8b-8192"  
     )
     
     print(f"LLM initialized with model: llama3-8b-8192")
@@ -22,7 +22,7 @@ def create_rag_chain(vector_store):
     """Create a RAG chain with the vector store and LLM."""
     llm = setup_llm()
     
-    # Create a retriever from the vector store
+    
     retriever = vector_store.as_retriever(
         search_type="similarity",
         search_kwargs={"k": 4}  # Retrieve 4 most relevant chunks
