@@ -42,7 +42,7 @@ def load_vector_store(directory="vector_store"):
 
 
 if __name__ == "__main__":
-    # Test code for the embeddings module
+  
     from pdf_processor import load_pdf, split_text
     
     test_pdf_path = input("Enter a PDF path to test embeddings: ")
