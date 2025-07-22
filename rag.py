@@ -63,34 +63,34 @@ def query_pdf(rag_chain, query):
     
     result = rag_chain({"query": query})
     
-    # The result contains the answer and source documents
+    
     return result
 
 if __name__ == "__main__":
-    # Test code for the RAG module
+    
     from embeddings import load_vector_store
     
-    # Try to load a vector store
+    
     try:
         vector_store = load_vector_store("test_vector_store")
         
-        # Create RAG chain
+        
         chain = create_rag_chain(vector_store)
         
-        # Test with user query
+        
         while True:
             query = input("\nEnter a question (or 'exit' to quit): ")
             if query.lower() in ['exit', 'quit', 'q']:
                 break
                 
-            # Process query
+            
             result = query_pdf(chain, query)
             
-            # Print answer
+            
             print("\nAnswer:")
             print(result["result"])
             
-            # Print sources
+            
             print("\nSources:")
             for i, doc in enumerate(result["source_documents"]):
                 print(f"Source {i+1}:")
