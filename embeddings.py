@@ -29,10 +29,9 @@ def load_vector_store(directory="vector_store"):
     if not os.path.exists(directory):
         raise FileNotFoundError(f"Vector store directory '{directory}' not found")
     
-    # Initialize the same embedding model used for creation
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     
-    # Load the vector store
+   
     vector_store = FAISS.load_local(directory, embeddings)
     print(f"Vector store loaded from '{directory}' directory")
     
@@ -51,15 +50,12 @@ if __name__ == "__main__":
     docs = load_pdf(test_pdf_path)
     chunks = split_text(docs)
     
-    # Create and save vector store
     vs = create_vector_store(chunks)
     save_dir = "test_vector_store"
     save_vector_store(vs, save_dir)
     
-    # Test loading the vector store
     loaded_vs = load_vector_store(save_dir)
     
-    # Test simple similarity search
     query = input("Enter a test query to search in the document: ")
     results = loaded_vs.similarity_search(query, k=2)
     
