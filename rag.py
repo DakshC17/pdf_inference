@@ -25,10 +25,10 @@ def create_rag_chain(vector_store):
     
     retriever = vector_store.as_retriever(
         search_type="similarity",
-        search_kwargs={"k": 4}  # Retrieve 4 most relevant chunks
+        search_kwargs={"k": 4}  
     )
     
-    # Define a custom prompt template that includes the retrieved documents
+    
     template = """You are an AI assistant providing information based on the given documents.
     
     Answer the user's question based ONLY on the following context:
@@ -45,10 +45,10 @@ def create_rag_chain(vector_store):
         input_variables=["context", "question"]
     )
     
-    # Create the RAG chain
+    
     rag_chain = RetrievalQA.from_chain_type(
         llm=llm,
-        chain_type="stuff",  # "stuff" means we stuff all documents into the prompt
+        chain_type="stuff",  
         retriever=retriever,
         return_source_documents=True,
         chain_type_kwargs={"prompt": prompt}
