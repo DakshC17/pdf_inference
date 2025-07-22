@@ -2,7 +2,7 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 def load_pdf(pdf_path):
-    """Load PDF file and extract text."""
+    
     print(f"Loading PDF from: {pdf_path}")
     
     loader = PyPDFLoader(pdf_path)
