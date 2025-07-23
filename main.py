@@ -5,8 +5,7 @@ from pdf_processor import load_pdf, split_text
 from embeddings import create_vector_store, save_vector_store, load_vector_store
 from rag import create_rag_chain, query_pdf
 
-# Load environment variables from .env file
-# This will make API keys accessible via os.environ
+
 load_dotenv()
 
 def main():
