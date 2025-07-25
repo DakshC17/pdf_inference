@@ -16,7 +16,7 @@ def create_vector_store(chunks):
     
     return vector_store
 
-
+## loading file
 
 def save_vector_store(vector_store, directory="vector_store"):
     """Save vector store to disk."""
