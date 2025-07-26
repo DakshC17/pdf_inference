@@ -46,7 +46,7 @@ if __name__ == "__main__":
     
     test_pdf_path = input("Enter a PDF path to test embeddings: ")
     
-    # Process the PDF
+    
     docs = load_pdf(test_pdf_path)
     chunks = split_text(docs)
     
